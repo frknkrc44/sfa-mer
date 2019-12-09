@@ -16,6 +16,17 @@ TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
 minfo "Untaring Mer"
 [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
 touch ${TARBALL}.untarred
+
+# alternatif çözüm
+# mkdir -p $MER_ROOT/sdks/sfossdk
+sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C $MER_ROOT/sdks/sdk || die
+# echo "export MER_ROOT=$MER_ROOT" >> ~/.bashrc 
+# echo 'alias sfossdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
+# echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;
+# echo '[ -d /etc/bash_completion.d ] && for i in /etc/bash_completion.d/*;do . $i;done'  >> ~/.mersdk.profile ;
+
+#sdk
+
 minfo "Done with Mer"
 
 # These commands are a tmp workaround of glitch when working with target:
