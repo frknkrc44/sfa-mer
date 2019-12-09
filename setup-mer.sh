@@ -9,9 +9,9 @@ mkdir -p "$MER_ROOT/sdks/sdk"
 
 mchapter "4.2"
 cd "$MER_ROOT"
-minfo "Fetching Mer"
-TARBALL=mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2
-[ -f $TARBALL  ] || curl -k -O https://img.merproject.org/images/mer-sdk/$TARBALL || die
+minfo "Fetching Jolla"
+TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
+[ -f $TARBALL  ] || curl -k -O http://releases.sailfishos.org/sdk/installers/latest/$TARBALL || die
 
 minfo "Untaring Mer"
 [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
