@@ -12,7 +12,9 @@ source "$TOOLDIR/utility-functions.inc"
 [ -z "$MERSDK" ] && exit 0
 
 mchapter "4.3"
-sudo zypper -n install android-tools-hadk tar || die
+sudo zypper up
+sudo zypper in  android-tools-hadk || die
+#sudo zypper -n install android-tools-hadk tar || die
 
 # These commands are a tmp workaround of glitch when working with target:
 sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
