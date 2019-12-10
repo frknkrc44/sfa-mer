@@ -29,7 +29,7 @@ mkdir -p "$UBUNTU_CHROOT"
 
 mchapter "4.4.1"
 pushd "$MER_ROOT"
-TARBALL=ubuntu-trusty-20180613-android-rootfs.tar.bz2
+TARBALL=ubuntu-trusty-android-rootfs.tar.bz2
 [ -f $TARBALL  ] || curl -O https://releases.sailfishos.org/ubu/$TARBALL
 minfo "untaring ubuntu..."
 [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
