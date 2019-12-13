@@ -12,6 +12,6 @@ sed -i -n '/kernel/{N;s/.*//;x;d;};x;p;${x;p;}' ./device/lge/d802/cm.dependencie
 sed -i "/},$/d" ./device/lge/d802/cm.dependencies
 sed -i "/^$/d"  ./device/lge/d802/cm.dependencies
 
-
+#cihaz reposunu kopyalaması lazım :)
 cp /home/anka/sfa-mer-master/device/lge .repo/local_manifests/manifest.xml
 sed -i "/_lge_d802/d" .repo/manifests/default.xml
