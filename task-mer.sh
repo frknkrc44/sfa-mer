@@ -12,20 +12,20 @@ source "$TOOLDIR/utility-functions.inc"
 [ -z "$MERSDK" ] && exit 0
 
 mchapter "4.3"
-sudo zypper up
-sudo zypper in  android-tools-hadk tar || die
+#sudo zypper up
+#sudo zypper in  android-tools-hadk tar || die
 #sudo zypper -n install android-tools-hadk tar || die
 
 # These commands are a tmp workaround of glitch when working with target:
-sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
-curlfix
-sudo zypper ref curlfix
-sudo zypper dup --from curlfix
+#sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
+#curlfix
+#sudo zypper ref curlfix
+#sudo zypper dup --from curlfix
 
 source ~/.hadk.env
 minfo "setting up ubuntu chroot"
 UBUNTU_CHROOT="$MER_ROOT/sdks/ubuntu"
-sudo mkdir -p "$UBUNTU_CHROOT"
+mkdir -p "$UBUNTU_CHROOT"
 
 mchapter "4.4.1"
 pushd "$MER_ROOT"
@@ -37,7 +37,7 @@ minfo "untaring ubuntu..."
 #touch ${TARBALL}.untarred
 
 #alternatif yöntem
-sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
+tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
 
 mchapter "4.4.2"
 grep $(hostname) "$UBUNTU_CHROOT/etc/hosts" || sudo sh -c "echo 127.0.0.2 $(hostname) >> \"$UBUNTU_CHROOT/etc/hosts\""

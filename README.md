@@ -43,7 +43,7 @@ last alpha5 for hammerhead
 ```
 ## alternatif :)
 ```bash
-./fullbuild.sh -mer-root /home/anka/sfa-mer-master/d802 -android-root /home/anka/sfa-mer-master/d802 -branch hybris-12.1 -device d802 -vendor lge -dest /home/anka/sfa-mer-master/d802 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
+./fullbuild.sh -mer-root /home/anka/sfa-mer-master/d802 -android-root /home/anka/sfa-mer-master/d802 -branch hybris-12.1 -device /home/anka/sfa-mer-master/d802 -vendor lge -dest /home/anka/sfa-mer-master/d802 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
 ```
 
 Change the whole above command line for your user directory and the model and maker that you're building for. 

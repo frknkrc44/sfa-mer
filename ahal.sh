@@ -16,7 +16,7 @@ cd $ANDROID_ROOT
 mchapter "7.1.1"
 
 minfo "Updating the Mer SDK..."
-sudo zypper ref -f ; sudo zypper -n dup
+#sudo zypper ref -f ; sudo zypper -n dup
 
 if repo_is_set "$EXTRA_REPO"; then
   minfo "Add remote extra repo"

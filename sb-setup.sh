@@ -12,7 +12,7 @@ source ~/.hadk.env
 
 minfo "Setup for Scratchbox2"
 cd "$MER_ROOT"
-sudo mkdir targets/$VENDOR-$DEVICE-armv7hl
+mkdir targets/$VENDOR-$DEVICE-armv7hl
 
 SFFE_SB2_TARGET="$MER_ROOT/targets/$VENDOR-$DEVICE-armv7hl"
 
@@ -40,7 +40,7 @@ else
 fi
 
 minfo "Unpacking ..."
-sudo tar --numeric-owner -pxjf $TARBALL -C $SFFE_SB2_TARGET || die
+tar --numeric-owner -pxjf $TARBALL -C $SFFE_SB2_TARGET || die
 mv ~/.scratchbox2{,-$(date +%d-%m-%Y.%H-%M-%S)}
 
 minfo "Changing ownership of $SFFE_SB2_TARGET to $USER"

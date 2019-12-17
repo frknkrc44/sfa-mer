@@ -14,12 +14,12 @@ TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
 [ -f $TARBALL  ] || curl -k -O http://releases.sailfishos.org/sdk/installers/latest/$TARBALL || die
 
 minfo "Untaring Mer"
-[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
+[ -f ${TARBALL}.untarred ] || tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
 touch ${TARBALL}.untarred
 
 # alternatif çözüm
 # mkdir -p $MER_ROOT/sdks/sfossdk
-sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C $MER_ROOT/sdks/sdk || die
+tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C $MER_ROOT/sdks/sdk || die
 # echo "export MER_ROOT=$MER_ROOT" >> ~/.bashrc 
 # echo 'alias sfossdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
 # echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;

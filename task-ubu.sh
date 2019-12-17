@@ -18,10 +18,10 @@ source ~/.hadk.env
 minfo "Installing additional tools for the Ubuntu chroot"
 sudo apt-get install -y unzip bsdmainutils
 
-sudo mkdir -p ~/bin
-sudo chmod +777 ~/bin
-[ -f ~/bin/repo ] || sudo curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-sudo chmod a+x ~/bin/repo
+mkdir -p ~/bin
+chmod +777 ~/bin
+[ -f ~/bin/repo ] || curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
 
 # this is actually needed and not just a tiny convenience because other scripts later use it internally
 export PATH=${PATH}:${HOME}/bin
@@ -39,8 +39,8 @@ if repo_is_unset "$DHD_REPO"; then
   DEVICE_CONFIG="$TOOLDIR/device/$VENDOR/manifest.xml"
   if [ -f $DEVICE_CONFIG ]; then
      minfo "Injecting manifest $DEVICE_CONFIG"
-     sudo mkdir -p .repo/local_manifests
-     sudo cp ${DEVICE_CONFIG} .repo/local_manifests/
+     mkdir -p .repo/local_manifests
+     cp ${DEVICE_CONFIG} .repo/local_manifests/
   else
      mwarn "No manifest for device $DEVICE was found, building might not work"
      minfo "In order to allow this script to inject a manifest, deposit"
@@ -110,7 +110,7 @@ unset DEVICE_SETUP_SCRIPT
   pushd bionic
   git checkout hybris-11.0-44S
   git cherry-pick 40eb3772fecf40bf89d70b30f57fb0e074301d3a
-  popd  
+  popd
   make libc_common &> make-libc_common.stdoe
   make libc &> make-libc.stdoe
 #### camera bits
@@ -126,12 +126,12 @@ unset DEVICE_SETUP_SCRIPT
 else  # DHD_REPO"
   mchapter "5.1 version b"
   if [ ! -d "$ANDROID_ROOT" ]; then
-     sudo mkdir -p "$ANDROID_ROOT"
-     sudo pushd "$ANDROID_ROOT"
-      git clone git://github.com/mer-hybris/droid-hal-device rpm || die
-     sudo popd
+     mkdir -p "$ANDROID_ROOT"
+     pushd "$ANDROID_ROOT"
+     git clone git://github.com/mer-hybris/droid-hal-device rpm || die
+     popd
  else
-     sudo mkdir -p "$ANDROID_ROOT"/rpm
+     mkdir -p "$ANDROID_ROOT"/rpm
      pushd "$ANDROID_ROOT"/rpm
      git clone git://github.com/mer-hybris/droid-hal-device master #rpm
     # git pull
