@@ -42,7 +42,8 @@ last alpha5 for hammerhead
 ./fullbuild.sh -mer-root /home/alin/lavello/NEXUS5/mer-jan-t2 -android-root /home/alin/lavello/NEXUS5/ubu-jan-t2 -branch hybris-11.0 -device hammerhead -vendor lge -dest /home/alin/lavello/nexus5 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
 ```
 ## alternatif :)
-```./fullbuild.sh -mer-root /home/anka/sfa-mer-master/d802 -android-root /home/anka/sfa-mer-master/d802 -branch hybris-12.1 -device /home/anka/sfa-mer-master/d802 -vendor lge -dest /home/anka/sfa-mer-master/d802 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
+```bash
+./fullbuild.sh -mer-root /home/anka/sfa-mer-master/d802 -android-root /home/anka/sfa-mer-master/d802 -branch hybris-12.1 -device /home/anka/sfa-mer-master/d802 -vendor lge -dest /home/anka/sfa-mer-master/d802 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
 ```
 
 Change the whole above command line for your user directory and the model and maker that you're building for. 
