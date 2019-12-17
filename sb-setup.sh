@@ -12,6 +12,7 @@ source ~/.hadk.env
 
 minfo "Setup for Scratchbox2"
 cd "$MER_ROOT"
+sudo mkdir targets/$VENDOR-$DEVICE-armv7hl
 
 SFFE_SB2_TARGET="$MER_ROOT/targets/$VENDOR-$DEVICE-armv7hl"
 
