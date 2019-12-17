@@ -13,7 +13,7 @@ source "$TOOLDIR/utility-functions.inc"
 
 mchapter "4.3"
 sudo zypper up
-sudo zypper in  android-tools-hadk || die
+sudo zypper in  android-tools-hadk tar || die
 #sudo zypper -n install android-tools-hadk tar || die
 
 # These commands are a tmp workaround of glitch when working with target:
@@ -25,15 +25,19 @@ sudo zypper dup --from curlfix
 source ~/.hadk.env
 minfo "setting up ubuntu chroot"
 UBUNTU_CHROOT="$MER_ROOT/sdks/ubuntu"
-mkdir -p "$UBUNTU_CHROOT"
+sudo mkdir -p "$UBUNTU_CHROOT"
 
 mchapter "4.4.1"
 pushd "$MER_ROOT"
-TARBALL=ubuntu-trusty-android-rootfs.tar.bz2
-[ -f $TARBALL  ] || curl -O https://releases.sailfishos.org/ubu/$TARBALL
+TARBALL=ubuntu-trusty-android-rootfs.tar.bz2 #ubuntu-trusty-20180613-android-rootfs.tar.bz2
+[ -f $TARBALL  ] || curl -O https://releases.sailfishos.org/ubu/$TARBALL ##http://img.merproject.org/images/mer-hybris/ubu/$TARBALL
 minfo "untaring ubuntu..."
-[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
-touch ${TARBALL}.untarred
+
+#[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
+#touch ${TARBALL}.untarred
+
+#alternatif yöntem
+sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
 
 mchapter "4.4.2"
 grep $(hostname) "$UBUNTU_CHROOT/etc/hosts" || sudo sh -c "echo 127.0.0.2 $(hostname) >> \"$UBUNTU_CHROOT/etc/hosts\""
@@ -42,8 +46,8 @@ popd
 
 cd ${TOOLDIR}
 # replace the shoddy ubu-chroot script
-sudo install -d /usr/local/bin || die
-sudo install -m 755 $TOOLDIR/ubu-chroot-fixed-cmd-mode /usr/local/bin/ubu-chroot || die
+#sudo install -d /usr/local/bin || die
+#sudo install -m 755 $TOOLDIR/ubu-chroot-fixed-cmd-mode /usr/local/bin/ubu-chroot || die
 
 minfo "diving into ubuntu chroot"
 ubu-chroot -r "$MER_ROOT/sdks/ubuntu" `pwd`/task-ubu.sh || die
