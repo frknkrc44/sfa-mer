@@ -18,9 +18,10 @@ source ~/.hadk.env
 minfo "Installing additional tools for the Ubuntu chroot"
 sudo apt-get install -y unzip bsdmainutils
 
-mkdir -p ~/bin
-[ -f ~/bin/repo ] || curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-chmod a+x ~/bin/repo
+sudo mkdir -p ~/bin
+sudo chmod +777 ~/bin
+[ -f ~/bin/repo ] || sudo curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+sudo chmod a+x ~/bin/repo
 
 # this is actually needed and not just a tiny convenience because other scripts later use it internally
 export PATH=${PATH}:${HOME}/bin
@@ -30,7 +31,7 @@ if repo_is_unset "$DHD_REPO"; then
   if [ ! -f "$ANDROID_ROOT/.repo/manifest.xml" ]; then
      mkdir -p "$ANDROID_ROOT"
      cd "$ANDROID_ROOT"
-     repo init -u git://github.com/mer-hybris/android.git -b $BRANCH || die
+     repo init -u git://github.com/mer-hybris/android.git -b hybris-12.1 || die
   fi
 
   cd "$ANDROID_ROOT"
@@ -38,8 +39,8 @@ if repo_is_unset "$DHD_REPO"; then
   DEVICE_CONFIG="$TOOLDIR/device/$VENDOR/manifest.xml"
   if [ -f $DEVICE_CONFIG ]; then
      minfo "Injecting manifest $DEVICE_CONFIG"
-     mkdir -p .repo/local_manifests
-     cp ${DEVICE_CONFIG} .repo/local_manifests/
+     sudo mkdir -p .repo/local_manifests
+     sudo cp ${DEVICE_CONFIG} .repo/local_manifests/
   else
      mwarn "No manifest for device $DEVICE was found, building might not work"
      minfo "In order to allow this script to inject a manifest, deposit"
@@ -55,7 +56,7 @@ if repo_is_unset "$DHD_REPO"; then
   minfo "Build environment, cache and breakfast"
   if [ -f .repo/local_manifests/roomservice.xml ]; then
      minfo "Remove room service"
-     rm -f .repo/local_manifests/roomservice.xml
+     rm -f ./$ANDROID_ROOT/repo/repo/local_manifests/roomservice.xml
   fi
 
 DEVICE_SETUP_SCRIPT="$TOOLDIR/device/$VENDOR/$DEVICE-hal-build-setup.sh"
@@ -125,13 +126,13 @@ unset DEVICE_SETUP_SCRIPT
 else  # DHD_REPO"
   mchapter "5.1 version b"
   if [ ! -d "$ANDROID_ROOT" ]; then
-     mkdir -p "$ANDROID_ROOT"
-     pushd "$ANDROID_ROOT"
+     sudo mkdir -p "$ANDROID_ROOT"
+     sudo pushd "$ANDROID_ROOT"
       git clone git://github.com/mer-hybris/droid-hal-device rpm || die
-     popd
+     sudo popd
  else
-     pushd "$ANDROID_ROOT"/rpm
+     sudo pushd "$ANDROID_ROOT"/rpm
      git pull
-     popd
+     sudo popd
   fi
 fi
