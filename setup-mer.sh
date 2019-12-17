@@ -19,7 +19,7 @@ minfo "Untaring Mer"
 
 # alternatif çözüm
 # mkdir -p $MER_ROOT/sdks/sfossdk
-tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C $MER_ROOT/sdks/sdk || die
+sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C $MER_ROOT/sdks/sdk || die
 # echo "export MER_ROOT=$MER_ROOT" >> ~/.bashrc 
 # echo 'alias sfossdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
 # echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;
