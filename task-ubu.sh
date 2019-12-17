@@ -131,8 +131,10 @@ else  # DHD_REPO"
       git clone git://github.com/mer-hybris/droid-hal-device rpm || die
      sudo popd
  else
-     sudo pushd "$ANDROID_ROOT"/rpm
-     git pull
-     sudo popd
+     sudo mkdir -p "$ANDROID_ROOT"/rpm
+     pushd "$ANDROID_ROOT"/rpm
+     git clone git://github.com/mer-hybris/droid-hal-device master #rpm
+    # git pull
+    popd
   fi
 fi
